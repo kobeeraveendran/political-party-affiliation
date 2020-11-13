@@ -1,13 +1,15 @@
 import praw
-from config import reddit_credentials
+from config import get_reddit_credentials
 
-user_agent, client_id, client_secret, username, password = reddit_credentials()
+credentials = get_reddit_credentials()
 
-if not client_id or not client_secret or not username or not password:
-    raise ValueError("Please provide the Reddit API credentials of your project in ../config.py")
+if None in credentials.values() or "" in credentials.values():
+    raise ValueError("Please provide valid Reddit API credentials of your project in a file called 'config.py', following the format in 'example_config.py'")
 
-reddit = praw.Reddit(client_id = client_id, 
-                     client_secret = client_secret, 
-                     username = username, 
-                     password = password, 
-                     user_agent = )
+reddit = praw.Reddit(client_id = credentials["client_id"], 
+                     client_secret = credentials["client_secret"], 
+                     username = credentials["username"], 
+                     password = credentials["password"], 
+                     user_agent = credentials["user_agent"])
+
+print(reddit.user.me())

@@ -1,4 +1,4 @@
-def reddit_credentials():
+def get_reddit_credentials():
     
     '''
     Input:
@@ -11,10 +11,18 @@ def reddit_credentials():
         - password (string): the password of the Reddit account used to register the project
     '''
 
-    user_agent = "political-party-affiliation""
+    user_agent = "user agent name goes here"
     client_id = "abc123def456gh"
     client_secret = "abcdefghijklmnopqrstuvwxyz5"
     username = "your reddit username"
     password = "your reddit password"
 
-    return user_agent, client_id, client_secret, username, password
+    credentials = {
+        "user_agent": user_agent, 
+        "client_id": client_id, 
+        "client_secret": client_secret, 
+        "username": username, 
+        "password": password
+    }
+
+    return credentials
