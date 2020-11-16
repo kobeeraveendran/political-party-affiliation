@@ -1,5 +1,13 @@
 import praw
 from config import get_reddit_credentials
+import argparse
+
+parser = argparse.ArgumentParser()
+
+parser.add_argument("--subreddit", type = str, help = "Name of the subreddit to be scraped.")
+parser.add_argument("--batch_size", type = int, default = 1500, help = "Number of comments to scrape from the specified subreddit.")
+
+args = parser.parse_args()
 
 credentials = get_reddit_credentials()
 
@@ -12,4 +20,26 @@ reddit = praw.Reddit(client_id = credentials["client_id"],
                      password = credentials["password"], 
                      user_agent = credentials["user_agent"])
 
-print(reddit.user.me())
+if not args.subreddit:
+    raise ValueError("Invalid subreddit name. Please specify one, or use 'all'.")
+
+
+batch_size = args.batch_size
+
+print("Batch size: ", batch_size)
+print("Subreddit specified: ", args.subreddit)
+
+subreddit = reddit.subreddit(args.subreddit)
+
+# print("Subreddit name: ", subreddit.display_name)
+# print("Subreddit title: ", subreddit.title)
+# print("Subreddit description: ", subreddit.description)
+
+comment_count = 0
+
+for comment in subreddit.comments(limit = 5):
+    print("\n\nBODY: ", comment.body)
+    print("\n\nREPLIES: ", comment.replies)
+    print("\nSCORE: ", comment.score)
+    print("\n\nPERMALINK: ", comment.permalink)
+    
