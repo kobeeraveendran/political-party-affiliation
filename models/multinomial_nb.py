@@ -27,4 +27,4 @@ clf.fit(X_train, y_train)
 preds = clf.predict(X_test)
 acc = clf.score(X_test, y_test)
 
-print("Test accuracy: ", acc)
+print("Test accuracy: {:.2f}".format(acc * 100))
