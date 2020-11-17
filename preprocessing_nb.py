@@ -7,6 +7,8 @@ import time
 
 def build_dataset():
 
+    maxlen = 0
+
     feature_map = {}
 
     nlp = spacy.load("en_core_web_sm")
@@ -29,6 +31,8 @@ def build_dataset():
             for token in doc_tokens:
                 if token.pos_ != 'X' and token.text.isalpha() and not token.is_stop:
                     token_lower = token.text.lower()
+
+                    maxlen = max(maxlen, len(token_lower))
 
                     if token_lower not in feature_map:
                         feature_map[token_lower] = index
@@ -77,4 +81,4 @@ def build_dataset():
 
     X_train, X_test, y_train, y_test = train_test_split(samples, labels, test_size = 0.2, shuffle = True, random_state = 42)
 
-    return X_train, y_train, X_test, y_test
+    return X_train, y_train, X_test, y_test, maxlen

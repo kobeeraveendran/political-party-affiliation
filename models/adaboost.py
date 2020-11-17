@@ -14,7 +14,7 @@ clf = AdaBoostClassifier(
     n_estimators = 200
 )
 
-X_train, y_train, X_test, y_test = build_dataset()
+X_train, y_train, X_test, y_test, _ = build_dataset()
 
 clf.fit(X_train, y_train)
 

@@ -8,7 +8,7 @@ from preprocessing_nb import build_dataset
 
 clf = MultinomialNB(alpha = 1.0, fit_prior = True)
 
-X_train, y_train, X_test, y_test = build_dataset()
+X_train, y_train, X_test, y_test, _ = build_dataset()
 
 print("SHAPES:")
 print(X_train.shape)
