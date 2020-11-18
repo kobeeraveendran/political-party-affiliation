@@ -111,9 +111,9 @@ model.summary()
 model.fit(xtrain,y_train, epochs=20, batch_size=16, verbose=False)
 
 loss, acc = model.evaluate(xtrain, y_train, verbose=False)
-print("Training Accuracy: ", acc.round(2))
+print("Training Accuracy: {:.2f}".format(acc * 100))
 loss, acc = model.evaluate(xtest, y_test, verbose=False)
-print("Test Accuracy: ", acc.round(2))
+print("Test Accuracy: {:.2f}".format(acc * 100))
 
 ypred=model.predict(xtest)
 
