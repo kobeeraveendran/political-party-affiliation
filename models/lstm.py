@@ -11,7 +11,7 @@ sys.path.append("../")
 
 from preprocessing_lstm import build_dataset
 
-embedding_dim = 100
+embedding_dim = 50
 
 model = Sequential()
 
@@ -19,7 +19,7 @@ model = Sequential()
 
 text, labels, maxlen = build_dataset()
 
-tokenizer = Tokenizer(num_words = 100)
+tokenizer = Tokenizer(num_words = 50)
 tokenizer.fit_on_texts(text)
 
 text = tokenizer.texts_to_sequences(text)
@@ -39,7 +39,7 @@ print("SHAPE X_TEST: ", x_test.shape)
 
 vocab_size = x_train.shape[1]
 
-model.add(layers.Embedding(input_dim = vocab_size + 1, output_dim = embedding_dim))
+model.add(layers.Embedding(input_dim = vocab_size, output_dim = embedding_dim))
 model.add(layers.LSTM(units = 50, return_sequences = True))
 model.add(layers.LSTM(units = 10))
 model.add(layers.Dropout(0.5))
