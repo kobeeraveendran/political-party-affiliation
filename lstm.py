@@ -92,8 +92,11 @@ maxlen=10
 xtrain=pad_sequences(xtrain,padding='post', maxlen=maxlen)
 xtest=pad_sequences(xtest,padding='post', maxlen=maxlen) 
  
-print(xtrain[3])
-print(xtest[3])
+print(x_train[:2])
+print(x_test[:2])
+
+print(xtrain[:2])
+print(xtest[:2])
  
 embedding_dim=50
 model=Sequential()
