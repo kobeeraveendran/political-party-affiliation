@@ -11,7 +11,7 @@ sys.path.append("../")
 
 from preprocessing_lstm import build_dataset
 
-embedding_dim = 50
+embedding_dim = 100
 
 model = Sequential()
 
@@ -29,6 +29,10 @@ x_test = tokenizer.texts_to_sequences(x_test)
 
 x_train = pad_sequences(x_train)
 x_test = pad_sequences(x_test)
+
+print("SHAPE X_TRAIN: ", x_train.shape)
+print("SHAPE Y_TRAIN: ", y_train.shape)
+print("SHAPE X_TEST: ", x_test.shape)
 
 vocab_size = x_train.shape[1]
 
