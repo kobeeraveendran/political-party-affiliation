@@ -30,9 +30,6 @@ x_test = tokenizer.texts_to_sequences(x_test)
 x_train = pad_sequences(x_train, padding = 'post', maxlen = maxlen)
 x_test = pad_sequences(x_test, padding = 'post', maxlen = maxlen)
 
-x_train = np.asarray(x_train)
-x_test = np.asarray(x_test)
-
 vocab_size = x_train.shape[1]
 
 model.add(layers.Embedding(input_dim = vocab_size, output_dim = embedding_dim, input_length = maxlen))
