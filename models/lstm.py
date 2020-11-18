@@ -108,11 +108,11 @@ model.add(layers.Dense(1, activation="sigmoid"))
 model.compile(optimizer="adam", loss="binary_crossentropy", 
      metrics=['accuracy'])
 model.summary()
-model.fit(xtrain,y_train, epochs=20, batch_size=16, verbose=False)
+model.fit(xtrain,y_train, epochs=20, batch_size=16, verbose=True)
 
-loss, acc = model.evaluate(xtrain, y_train, verbose=False)
+loss, acc = model.evaluate(xtrain, y_train, verbose=True)
 print("Training Accuracy: {:.2f}".format(acc * 100))
-loss, acc = model.evaluate(xtest, y_test, verbose=False)
+loss, acc = model.evaluate(xtest, y_test, verbose=True)
 print("Test Accuracy: {:.2f}".format(acc * 100))
 
 ypred=model.predict(xtest)
