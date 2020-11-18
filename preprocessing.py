@@ -53,6 +53,7 @@ def build_dataset():
             doc_tokens = nlp(line)
 
             curr_doc = [0] * len(feature_map)
+            curr_text = []
 
             for token in doc_tokens:
                 if token.pos_ != 'X' and token.text.isalpha() and not token.is_stop:
@@ -81,4 +82,4 @@ def build_dataset():
 
     X_train, X_test, y_train, y_test = train_test_split(samples, labels, test_size = 0.2, shuffle = True, random_state = 42)
 
-    return X_train, y_train, X_test, y_test, maxlen
+    return X_train, y_train, X_test, y_test, maxlen# , text
