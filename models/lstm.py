@@ -65,6 +65,13 @@ from keras import layers
 from sklearn.model_selection import train_test_split
 import pandas as pd
 
+from keras.backend.tensorflow_backend import set_session
+import tensorflow as tf
+config = tf.ConfigProto()
+config.gpu_options.allow_growth = True
+sess = tf.Session(config=config)
+set_session(sess)
+
 df_con = pd.read_table("../datasets/conservative.txt", sep = "\n", header = None, error_bad_lines = False)
 df_con.columns = ["text"]
 df_con.insert(1, "label", [1 for _ in range(df_con.shape[0])], True)
