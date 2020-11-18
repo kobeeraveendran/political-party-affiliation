@@ -65,14 +65,13 @@ from keras import layers
 from sklearn.model_selection import train_test_split
 import pandas as pd
 
-df = pd.read_csv('../datasets/conservative.txt')
-df_con = pd.read_table("../datasets/conservative.txt", sep = "\n")
+df_con = pd.read_table("../datasets/conservative.txt", sep = "\n", header = None, error_bad_lines = False)
 df_con.columns = ["text"]
-df_con.insert(1, "label", [1 for _ in len(df_con.index)], True)
+df_con.insert(1, "label", [1 for _ in range(df_con.shape[0])], True)
 
-df_lib = pd.read_table("../datasets/democrats.txt", sep = "\n")
+df_lib = pd.read_table("../datasets/democrats.txt", sep = "\n", header = None, error_bad_lines = False)
 df_lib.columns = ["text"]
-df_con.insert(1, "label", [0 for _ in len(df_lib.index)], True)
+df_lib.insert(1, "label", [0 for _ in range(df_lib.shape[0])], True)
 
 df = pd.concat([df_con, df_lib], sort = False)
 
