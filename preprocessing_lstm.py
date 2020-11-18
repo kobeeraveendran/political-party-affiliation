@@ -22,4 +22,7 @@ def build_dataset():
             text.append(line)
         labels.extend([1 for line in lines])
 
+    print(text[:3])
+    print(labels[:3])
+
     return text, np.asarray(labels), maxlen
