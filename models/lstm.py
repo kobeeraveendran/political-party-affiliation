@@ -19,16 +19,19 @@ model = Sequential()
 
 text, labels, maxlen = build_dataset()
 
-tokenizer = Tokenizer()
+tokenizer = Tokenizer(num_words = 100)
 tokenizer.fit_on_texts(text)
+
+text = tokenizer.texts_to_sequences(text)
+text = pad_sequences(text, maxlen = maxlen)
 
 x_train, x_test, y_train, y_test = train_test_split(text, labels, test_size = 0.2, random_state = 42)
 
-x_train = tokenizer.texts_to_sequences(x_train)
-x_test = tokenizer.texts_to_sequences(x_test)
+# x_train = tokenizer.texts_to_sequences(x_train)
+# x_test = tokenizer.texts_to_sequences(x_test)
 
-x_train = pad_sequences(x_train)
-x_test = pad_sequences(x_test)
+# x_train = pad_sequences(x_train)
+# x_test = pad_sequences(x_test)
 
 print("SHAPE X_TRAIN: ", x_train.shape)
 print("SHAPE Y_TRAIN: ", y_train.shape)
@@ -36,7 +39,7 @@ print("SHAPE X_TEST: ", x_test.shape)
 
 vocab_size = x_train.shape[1]
 
-model.add(layers.Embedding(input_dim = vocab_size, output_dim = embedding_dim))
+model.add(layers.Embedding(input_dim = vocab_size + 1, output_dim = embedding_dim))
 model.add(layers.LSTM(units = 50, return_sequences = True))
 model.add(layers.LSTM(units = 10))
 model.add(layers.Dropout(0.5))
