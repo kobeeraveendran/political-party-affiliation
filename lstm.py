@@ -100,9 +100,7 @@ model=Sequential()
 model.add(layers.Embedding(input_dim=vocab_size,
          output_dim=embedding_dim,
          input_length=maxlen))
-model.add(layers.GRU(units = 100, return_sequences=True))
-model.add(layers.GRU(units=50,return_sequences=True))
-model.add(layers.GRU(units = 25, return_sequences=True))
+model.add(layers.GRU(units = 50, return_sequences=True))
 model.add(layers.GRU(units=10))
 model.add(layers.Dropout(0.5))
 model.add(layers.Dense(8))
