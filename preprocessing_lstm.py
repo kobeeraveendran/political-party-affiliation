@@ -18,7 +18,7 @@ def build_dataset():
         lines = file.readlines()
 
         for line in lines:
-            maxlen = max(maxlen, line(line.split()))
+            maxlen = max(maxlen, len(line.split()))
             text.append(line)
         labels.extend([1 for line in lines])
 
