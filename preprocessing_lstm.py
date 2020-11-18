@@ -1,4 +1,6 @@
 import numpy as np
+import spacy
+
 
 def build_dataset():
 
@@ -6,11 +8,24 @@ def build_dataset():
     labels = []
     maxlen = 0
 
+    nlp = spacy.load("en_core_web_sm")
+
     with open("../datasets/democrats.txt", 'r') as file:
         lines = file.readlines()
 
+        curr_line = []
+
         for line in lines:
-            maxlen = max(maxlen, len(line.split()))
+            
+            doc_tokens = nlp(line)
+
+            for token in doc_tokens:
+                if token.pos_ != 'X' and token.text.isalpha() and not token.is_stop:
+                    token_lower = token.text.lower()
+
+                    
+
+            maxlen = max(maxlen, line)
             text.append(line)
         labels.extend([0 for line in lines])
 
