@@ -52,8 +52,8 @@ model.summary()
 
 model.fit(x_train, y_train, epochs = 20, batch_size = 20)
 loss, acc = model.evaluate(x_train, y_train, verbose = False)
-print("Training acc: ", acc.round(2))
+print("Training acc: {:.2f}".format(acc * 100))
 test_loss, test_acc = model.evaluate(x_test, y_test, verbose = True)
-print("Test acc: ", test_acc.round(2))
+print("Test acc: {:.2f}".format(test_acc * 100))
 
 # y_preds = model.predict(X_test)
