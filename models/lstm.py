@@ -120,6 +120,6 @@ ypred=model.predict(xtest)
 ypred[ypred>0.5]=1 
 ypred[ypred<=0.5]=0
 
-result=zip(x_test, y_test, ypred)
-for i in result:
-    print(i)
+# result=zip(x_test, y_test, ypred)
+# for i in result:
+#     print(i)
