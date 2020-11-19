@@ -11,13 +11,19 @@ from preprocessing_nb import build_dataset
 #     n_estimators = 200
 # )
 
+
+
 clf = AdaBoostClassifier(
-    n_estimators = 200, learning_rate = 1
+    n_estimators = 300, learning_rate = 1
 )
 
-X_train, y_train, X_test, y_test, _ = build_dataset()
+print("Loading data...")
+X_train, y_train, X_test, y_test, _, _ = build_dataset()
+print("Data loaded!")
 
+print("Fitting model...")
 clf.fit(X_train, y_train)
+
 
 preds = clf.predict(X_test)
 
