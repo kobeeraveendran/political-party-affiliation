@@ -18,7 +18,7 @@ train_df = pd.DataFrame(train_data)
 test_df = pd.DataFrame(test_data)
 
 #model = ClassificationModel("roberta", "roberta-base")
-model = ClassificationModel("xlnet", "xlnet-base-cased")
+model = ClassificationModel("xlnet", "xlnet-base-cased", overwrite_output_dir = True)
 
 print("Training model...")
 model.train_model(train_df, overwrite_output_dir = True)
