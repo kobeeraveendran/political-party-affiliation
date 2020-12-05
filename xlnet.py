@@ -21,7 +21,7 @@ model = ClassificationModel("roberta", "roberta-base")
 #model = ClassificationModel("xlnet", "xlnet-base-cased")
 
 print("Training model...")
-model.train_model(train_df)
+model.train_model(train_df, overwrite_output_dir = True)
 print("XLNet trained!")
 
 result, model_outputs, wrong_predictions = model.eval_model(test_df)
