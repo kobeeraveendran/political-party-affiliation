@@ -17,7 +17,8 @@ print("Loaded data.")
 train_df = pd.DataFrame(train_data)
 test_df = pd.DataFrame(test_data)
 
-model = ClassificationModel("xlnet", "xlnet-base-cased")
+model = ClassificationModel("roberta", "roberta-base")
+#model = ClassificationModel("xlnet", "xlnet-base-cased")
 
 print("Training model...")
 model.train_model(train_df)
