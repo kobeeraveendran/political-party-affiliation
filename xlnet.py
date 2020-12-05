@@ -20,7 +20,8 @@ test_df = pd.DataFrame(test_data)
 
 #model = ClassificationModel("roberta", "roberta-base")
 #model = ClassificationModel("xlnet", "xlnet-base-cased")
-model = ClassificationModel("bert", "bert-base-cased")
+#model = ClassificationModel("bert", "bert-base-cased")
+model = ClassificationModel("roberta", "distilroberta-base")
 
 print("Training model...")
 model.train_model(train_df, acc = sklearn.metrics.accuracy_score)
