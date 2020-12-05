@@ -9,14 +9,19 @@ logging.basicConfig(level = logging.INFO)
 transformers_logger = logging.getLogger("transformers")
 transformers_logger.setLevel(logging.WARNING)
 
+print("Loading data...")
 train_data, test_data = load_data()
+print("Loaded data.")
+
 
 train_df = pd.DataFrame(train_data)
 test_df = pd.DataFrame(test_data)
 
 model = ClassificationModel("xlnet", "xlnet-base")
 
+print("Training model...")
 model.train_model(train_df)
+print("XLNet trained!")
 
 result, model_outputs, wrong_predictions = model.eval_model(test_df)
 
