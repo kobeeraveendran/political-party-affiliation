@@ -1,5 +1,6 @@
 from simpletransformers.classification import ClassificationModel
 
+import sklearn
 import pandas as pd
 import logging
 
@@ -21,13 +22,13 @@ test_df = pd.DataFrame(test_data)
 model = ClassificationModel("xlnet", "xlnet-base-cased")
 
 print("Training model...")
-model.train_model(train_df, overwrite_output_dir = True)
+model.train_model(train_df, acc = sklearn.metrics.accuracy_score)
 print("XLNet trained!")
 
-result, model_outputs, wrong_predictions = model.eval_model(test_df)
+result, model_outputs, wrong_predictions = model.eval_model(test_df, acc = sklearn.metrics.accuracy_score)
 
 print("Results: ", result)
 print()
 print("Model outputs: ", model_outputs)
 print()
-#print("Misclassified examples: ", wrong_predictions)
+print("Misclassified examples: ", len(wrong_predictions))
