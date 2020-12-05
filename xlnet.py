@@ -19,7 +19,7 @@ train_df = pd.DataFrame(train_data)
 test_df = pd.DataFrame(test_data)
 
 #model = ClassificationModel("roberta", "roberta-base")
-model = ClassificationModel("xlnet", "xlnet-base-cased")
+model = ClassificationModel("xlnet", "xlnet-large-cased")
 
 print("Training model...")
 model.train_model(train_df, acc = sklearn.metrics.accuracy_score)
