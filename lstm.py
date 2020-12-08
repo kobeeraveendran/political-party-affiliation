@@ -63,6 +63,7 @@ from keras.preprocessing.sequence import pad_sequences
 from keras.models import Sequential
 from keras import layers
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import f1_score
 import pandas as pd
 
 df_con = pd.read_table("datasets/conservative.txt", sep = "\n", header = None, error_bad_lines = False)
@@ -115,13 +116,18 @@ model.fit(xtrain,y_train, epochs=20, batch_size=32, verbose=True)
 
 loss, acc = model.evaluate(xtrain, y_train, verbose=True)
 print("Training Accuracy: {:.2f}".format(acc * 100))
+train_preds = model.predict_classes(xtrain)
+print("Training F1 score: {:.2f}".format(f1_score(y_train, train_preds)))
+
 loss, acc = model.evaluate(xtest, y_test, verbose=True)
 print("Test Accuracy: {:.2f}".format(acc * 100))
+test_preds = model.predict_classes(xtest)
+print("Test F1 score: {:.2f}".format(y_train, test_preds))
 
-ypred=model.predict(xtest)
+#ypred=model.predict(xtest)
 
-ypred[ypred>0.5]=1 
-ypred[ypred<=0.5]=0
+#ypred[ypred>0.5]=1 
+#ypred[ypred<=0.5]=0
 
 # result=zip(x_test, y_test, ypred)
 # for i in result:

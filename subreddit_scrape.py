@@ -10,7 +10,7 @@ parser = argparse.ArgumentParser()
 
 parser.add_argument("--subreddit", type = str, help = "Name of the subreddit to be scraped.")
 parser.add_argument("--batch_size", type = int, default = 1500, help = "Number of comments to scrape from the specified subreddit. Default = 1500")
-parser.add_argument("--score_threshold", type = int, default = 1, help = "Minimum score of a comment required for it to be logged. Default = 10")
+parser.add_argument("--score_threshold", type = int, default = 10, help = "Minimum score of a comment required for it to be logged. Default = 10")
 
 args = parser.parse_args()
 
@@ -51,7 +51,7 @@ def extract_comments_tree():
 
     bar = ChargingBar("Comments collected: ", max = batch_size, suffix = '%(index)d/%(max)d (%(percent)d%%)')
 
-    for submission in subreddit.top():
+    for submission in subreddit.hot():
 
         submission.comments.replace_more(limit = None)
 
@@ -75,13 +75,13 @@ def extract_comments_tree():
 
     bar.finish()
 
-    # print("Comments collected: ", comment_count)
+    print("Comments collected: ", comment_count)
 
 def extract_top_level_comments():
 
     comment_count = 0
 
-    bar = ChargingBar("Comments collected: ", max = batch_size)
+    bar = ChargingBar("Comments collected: ", max = batch_size, suffix = '%(index)d/%(max)d (%(percent)d%%)')
 
     for submission in subreddit.hot(limit = None):
 
@@ -94,7 +94,7 @@ def extract_top_level_comments():
 
                     # save to log
                     with open("datasets/{}_toplvl.txt".format(args.subreddit), 'a') as logfile:
-                        logfile.write(comment.body.replace('\n', ' ') + "<END_COMMENT>\n")
+                        logfile.write(comment.body.replace('\n', '') + "\n")
 
                     comment_count += 1
                     bar.next()
@@ -113,6 +113,7 @@ print("Beginning comment extraction...\n")
 
 start = time.time()
 extract_comments_tree()
+#extract_top_level_comments()
 end = time.time()
 
 print("Execution time: {:.2f}s".format(end - start))
