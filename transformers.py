@@ -23,11 +23,10 @@ test_df = pd.DataFrame(test_data)
 #model = ClassificationModel("bert", "bert-base-cased")
 #model = ClassificationModel("roberta", "distilroberta-base")
 
-model_args = ClassificationArgs(num_train_epochs = 5)
-
 models = [("bert", "bert-base-cased"), ("xlnet", "xlnet-base-cased"), ("roberta", "distilroberta-base")]
 
 for model_type, model_name in models:
+    model_args = ClassificationArgs(num_train_epochs = 5, output_dir = "outputs/{}".format(model_name))
     model = ClassificationModel(model_type, model_name, args = model_args)
 
     print("Fine-tuning model {}...".format(model_name))

@@ -62,7 +62,7 @@ def extract_comments_tree():
 
                     # save to log
                     with open("datasets/{}.txt".format(args.subreddit), 'a') as logfile:
-                        logfile.write(comment.body.replace('\n', '') + "\n")
+                        logfile.write(comment.body.replace('\n', ' ') + "\n")
 
                     comment_count += 1
                     bar.next()
@@ -94,7 +94,7 @@ def extract_top_level_comments():
 
                     # save to log
                     with open("datasets/{}_toplvl.txt".format(args.subreddit), 'a') as logfile:
-                        logfile.write(comment.body.replace('\n', '') + "\n")
+                        logfile.write(comment.body.replace('\n', ' ') + "\n")
 
                     comment_count += 1
                     bar.next()
