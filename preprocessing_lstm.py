@@ -10,18 +10,18 @@ def build_dataset():
 
     nlp = spacy.load("en_core_web_sm")
 
-    with open("../datasets/democrats.txt", 'r') as file:
+    with open("../datasets/democrats_orig.txt", 'r') as file:
         lines = file.readlines()
 
         curr_line = []
 
         for line in lines:
             
-            doc_tokens = nlp(line)
+            # doc_tokens = nlp(line)
 
-            for token in doc_tokens:
-                if token.pos_ != 'X' and token.text.isalpha() and not token.is_stop:
-                    token_lower = token.text.lower()
+            # for token in doc_tokens:
+            #     if token.pos_ != 'X' and token.text.isalpha() and not token.is_stop:
+            #         token_lower = token.text.lower()
 
                     
 
@@ -29,7 +29,7 @@ def build_dataset():
             text.append(line)
         labels.extend([0 for line in lines])
 
-    with open("../datasets/conservative.txt", 'r') as file:
+    with open("../datasets/conservative_orig.txt", 'r') as file:
         lines = file.readlines()
 
         for line in lines:
