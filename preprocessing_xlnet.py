@@ -5,7 +5,7 @@ def load_data():
 
     data = []
 
-    with open("datasets/conservative_orig.txt", 'r') as file:
+    with open("datasets/conservative.txt", 'r') as file:
         lines = file.readlines()
 
         for line in lines:
