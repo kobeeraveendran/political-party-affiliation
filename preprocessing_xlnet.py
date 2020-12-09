@@ -11,7 +11,7 @@ def load_data():
         for line in lines:
             data.append([line[:-1], 1])
 
-    with open("datasets/democrats.txt", 'r') as file:
+    with open("datasets/liberal.txt", 'r') as file:
         lines = file.readlines()
 
         for line in lines:
