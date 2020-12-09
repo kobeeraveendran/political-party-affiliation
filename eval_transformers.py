@@ -33,16 +33,18 @@ test_df = pd.DataFrame(test_data)
 
 model_name = args.model if args.model else 'bert'
 
+print("Training model: ", model_name)
+
 model_args = ClassificationArgs(num_train_epochs = 3, output_dir = "outputs/{}".format(model_name))
 
-if model_name == "bert":
-    model = ClassificationModel("bert", "bert-base-cased", args = model_args)
-
-elif model_name == "xlnet":
+if model_name == "xlnet":
     model = ClassificationModel("xlnet", "xlnet-base-cased", args = model_args)
 
 elif model_name == "roberta":
     model = ClassificationModel("roberta", "distilroberta-base", args = model_args)
+
+else:
+    model = ClassificationModel("bert", "bert-base-cased", args = model_args)
 
 result, model_outputs, wrong_preds = model.eval_model(test_df, acc = sklearn.metrics.accuracy_score, f1 = sklearn.metrics.f1_score)
 
