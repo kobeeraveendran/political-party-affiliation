@@ -1,0 +1,11 @@
+name: /home/cap6614.student6/my-envs/simple-t
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.6
+  - torchaudio
+  - cudatoolkit=10.2
+  - torchvision
+  - pytorch
+prefix: /home/cap6614.student6/my-envs/simple-t
