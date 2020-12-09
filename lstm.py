@@ -52,7 +52,7 @@ model.add(layers.Dense(1, activation="sigmoid"))
 model.compile(optimizer="adam", loss="binary_crossentropy", 
      metrics=['accuracy'])
 model.summary()
-model.fit(xtrain,y_train, epochs=20, batch_size=32, verbose=True)
+model.fit(xtrain,y_train, epochs=10, batch_size=16, verbose=True)
 
 loss, acc = model.evaluate(xtrain, y_train, verbose=True)
 print("Training Accuracy: {:.2f}".format(acc * 100))
