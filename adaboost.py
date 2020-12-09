@@ -35,4 +35,4 @@ f1 = f1_score(y_test, preds)
 print("AdaBoost")
 
 print("Test accuracy: {:.2f}".format(acc * 100))
-print("F1 Score: {:.2f}".format(f1 * 100))
+print("F1 Score: {:.4f}".format(f1))

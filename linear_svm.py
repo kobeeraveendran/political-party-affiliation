@@ -2,6 +2,8 @@ from sklearn.svm import LinearSVC
 import numpy as np
 import sys
 
+from sklearn.metrics import f1_score
+
 from preprocessing_nb import build_dataset
 
 clf = LinearSVC()
@@ -24,5 +26,7 @@ clf.fit(X_train, y_train)
 
 preds = clf.predict(X_test)
 acc = clf.score(X_test, y_test)
+f1 = f1_score(y_test, preds)
 
 print("Test accuracy: {:.2f}".format(acc * 100))
+print("F1 Score: {:.4f}".format(f1))
