@@ -2,6 +2,8 @@ from sklearn.naive_bayes import MultinomialNB
 import numpy as np
 import sys
 
+from sklearn.metrics import f1_score
+
 from preprocessing_nb import build_dataset
 
 clf = MultinomialNB(alpha = 1.0, fit_prior = True)
@@ -20,16 +22,20 @@ clf.fit(X_train, y_train)
 
 preds = clf.predict(X_test)
 acc = clf.score(X_test, y_test)
+f1 = f1_score(y_test, preds)
 
 print("Test accuracy: {:.2f}".format(acc * 100))
+print("F1 Score: {:.2f}".format(f1 * 100))
 
-test_string = "fuck nazis"
-test_input = np.zeros(X_train[0].shape)
+# to test on an input string...
 
-for word in test_string.split():
-    if word in feature_map:
-        test_input[feature_map[word]] = 1
-pred = clf.predict([test_input])
+# test_string = "<test_string_here>"
+# test_input = np.zeros(X_train[0].shape)
 
-print("Input: {}".format(test_string))
-print("Prediction (0 = lib, 1 = cons): ", pred)
+# for word in test_string.split():
+#     if word in feature_map:
+#         test_input[feature_map[word]] = 1
+# pred = clf.predict([test_input])
+
+# print("Input: {}".format(test_string))
+# print("Prediction (0 = lib, 1 = cons): ", pred)

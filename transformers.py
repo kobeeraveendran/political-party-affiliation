@@ -25,8 +25,10 @@ test_df = pd.DataFrame(test_data)
 
 models = [("bert", "bert-base-cased"), ("xlnet", "xlnet-base-cased"), ("roberta", "distilroberta-base")]
 
+results = {}
+
 for model_type, model_name in models:
-    model_args = ClassificationArgs(num_train_epochs = 5, output_dir = "outputs/{}".format(model_name))
+    model_args = ClassificationArgs(num_train_epochs = 1, output_dir = "outputs/{}".format(model_name))
     model = ClassificationModel(model_type, model_name, args = model_args)
 
     print("Fine-tuning model {}...".format(model_name))
@@ -35,7 +37,12 @@ for model_type, model_name in models:
 
     result, model_outputs, wrong_predictions = model.eval_model(test_df, acc = sklearn.metrics.accuracy_score, f1 = sklearn.metrics.f1_score)
 
-    print("Results: ", result, '\n')
-    print("Model outputs: ", model_outputs, '\n')
-    print("Misclassified examples: ", len(wrong_predictions), '\n')
+    results[model_type] = result
+
+for model in results:
+    print("Results: {}\n".format(results[model]))
+
+# print("Results: ", result, '\n')
+# print("Model outputs: ", model_outputs, '\n')
+# print("Misclassified examples: ", len(wrong_predictions), '\n')
 
