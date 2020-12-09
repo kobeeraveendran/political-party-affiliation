@@ -1,4 +1,4 @@
-name: /home/cap6614.student6/my-envs/simple-t
+name: simple-t
 channels:
   - pytorch
   - defaults
@@ -148,4 +148,3 @@ dependencies:
     - webencodings==0.5.1
     - widgetsnbextension==3.5.1
     - zipp==3.4.0
-prefix: /home/cap6614.student6/my-envs/simple-t

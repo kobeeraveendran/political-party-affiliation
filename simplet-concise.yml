@@ -1,4 +1,4 @@
-name: /home/cap6614.student6/my-envs/simple-t
+name: simple-t
 channels:
   - defaults
   - conda-forge
@@ -8,4 +8,6 @@ dependencies:
   - cudatoolkit=10.2
   - torchvision
   - pytorch
-prefix: /home/cap6614.student6/my-envs/simple-t
+  - pip:
+    - simpletransformers
+    - transformers

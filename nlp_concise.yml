@@ -12,5 +12,5 @@ dependencies:
   - pandas
   - py-xgboost-gpu
   - setuptools==45.1.0
-prefix: /home/kobee/anaconda3/envs/nlp
-
+  - pip:
+    - praw

@@ -135,5 +135,4 @@ dependencies:
     - update-checker==0.18.0
     - websocket-client==0.57.0
     - yarg==0.1.9
-prefix: /home/kobee/anaconda3/envs/nlp
-
+    
