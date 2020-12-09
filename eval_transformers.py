@@ -47,7 +47,7 @@ elif model_name == "roberta":
 result, model_outputs, wrong_preds = model.eval_model(test_df, acc = sklearn.metrics.accuracy_score, f1 = sklearn.metrics.f1_score)
 
 print("Results: {}\n".format(result))
-print("Misclassified examples: {}".format(wrong_preds))
+print("Misclassified examples: {}".format(len(wrong_preds)))
 
 # models = [("bert", "bert-base-cased"), ("xlnet", "xlnet-base-cased"), ("roberta", "distilroberta-base")]
 
