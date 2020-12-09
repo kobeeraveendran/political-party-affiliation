@@ -10,7 +10,7 @@ def build_dataset():
 
     nlp = spacy.load("en_core_web_sm")
 
-    with open("../datasets/democrats_orig.txt", 'r') as file:
+    with open("datasets/liberal.txt", 'r') as file:
         lines = file.readlines()
 
         curr_line = []
@@ -29,7 +29,7 @@ def build_dataset():
             text.append(line)
         labels.extend([0 for line in lines])
 
-    with open("../datasets/conservative_orig.txt", 'r') as file:
+    with open("datasets/conservative.txt", 'r') as file:
         lines = file.readlines()
 
         for line in lines:

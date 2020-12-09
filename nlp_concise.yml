@@ -1,0 +1,16 @@
+name: nlp
+channels:
+  - defaults
+dependencies:
+  - nltk
+  - python=3.7
+  - spacy=2.3.1
+  - numpy=1.19.1
+  - scikit-learn=0.23.2
+  - progress
+  - keras-gpu
+  - pandas
+  - py-xgboost-gpu
+  - setuptools==45.1.0
+prefix: /home/kobee/anaconda3/envs/nlp
+

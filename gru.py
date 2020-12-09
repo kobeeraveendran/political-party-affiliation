@@ -6,11 +6,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
 import pandas as pd
 
-df_con = pd.read_table("datasets/conservative_orig.txt", sep = "\n", header = None, error_bad_lines = False)
+df_con = pd.read_table("datasets/conservative.txt", sep = "\n", header = None, error_bad_lines = False)
 df_con.columns = ["text"]
 df_con.insert(1, "label", [1 for _ in range(df_con.shape[0])], True)
 
-df_lib = pd.read_table("datasets/democrats_orig.txt", sep = "\n", header = None, error_bad_lines = False)
+df_lib = pd.read_table("datasets/liberal.txt", sep = "\n", header = None, error_bad_lines = False)
 df_lib.columns = ["text"]
 df_lib.insert(1, "label", [0 for _ in range(df_lib.shape[0])], True)
 

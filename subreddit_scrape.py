@@ -117,10 +117,3 @@ extract_comments_tree()
 end = time.time()
 
 print("Execution time: {:.2f}s".format(end - start))
-
-# for comment in subreddit.comments(limit = 5):
-#     print("\n\nBODY: ", comment.body)
-#     print("\n\nREPLIES: ", comment.replies)
-#     print("\nSCORE: ", comment.score)
-#     print("\n\nPERMALINK: ", comment.permalink)
-    

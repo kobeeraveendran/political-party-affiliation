@@ -8,12 +8,6 @@ from sklearn.metrics import f1_score
 
 from preprocessing_nb import build_dataset
 
-# clf = AdaBoostClassifier(
-#     DecisionTreeClassifier(max_depth = 1), 
-#     n_estimators = 200
-# )
-
-
 
 clf = AdaBoostClassifier(
     n_estimators = 300, learning_rate = 1
