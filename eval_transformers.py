@@ -35,7 +35,7 @@ model_name = args.model if args.model else 'bert'
 
 print("Training model: ", model_name)
 
-model_args = ClassificationArgs(num_train_epochs = 5, output_dir = "outputs/{}".format(model_name))
+model_args = ClassificationArgs(output_dir = "outputs/{}".format(model_name))
 
 if model_name == "xlnet":
     model = ClassificationModel("xlnet", "xlnet-base-cased", args = model_args)
